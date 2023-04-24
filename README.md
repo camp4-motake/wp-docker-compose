@@ -17,6 +17,12 @@ docker compose up -d
 
 ```
 
+### WP-CLIの実行
+
+```sh
+docker compose run --rm cli bash -c "wp --version"
+```
+
 ### データベースのインポート
 
 <http://localhost:8001/>（8001は環境変数`ADMINER_PORT`の値）を開き、adminerにログイン(サーバー:`db`それ以外は全て`wordpress`) データベースのインポートなどができます。
@@ -36,4 +42,4 @@ docker compose down -v
 docker system prune --volumes
 ```
 
-> コンテナやイメージの個別の削除方法や詳細は[公式文書](https://docs.docker.jp/config/pruning.html)など参照
+> 削除方法の詳細は[公式文書](https://docs.docker.jp/config/pruning.html)など参照
