@@ -2,7 +2,9 @@
 
 動作検証用　WordPress6.0.x PHP8.1 MySQLl8.0 Apache 環境
 
-事前に[Dockerクライアント](https://www.docker.com/products/docker-desktop/)が必要です。
+## 要件
+
+- [Dockerクライアント](https://www.docker.com/products/docker-desktop/)
 
 ## 起動
 
