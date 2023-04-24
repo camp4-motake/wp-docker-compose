@@ -9,23 +9,36 @@ docker compose | WordPress6.0.3 PHP8.1 MySQLl8.0 Apache 環境
 ## 起動
 
 ```sh
-# 1, .env を作成し、必要に応じて環境変数のポート番号を変更
+# 1, .env を作成し、必要に応じて環境変数を変更します（各値は他のプロジェクと重複しないようしてください）
 cp ./.env-example ./.env
 
 # 2, WP 起動
 docker compose up -d
-
 ```
+
+上記手順で起動後 <http://localhost:8001/>（8001は環境変数`ADMINER_PORT`の値）を開き初期設定を実行する
 
 ### WP-CLIの実行
 
 ```sh
+# 例
 docker compose run --rm cli bash -c "wp --version"
 ```
 
 ### データベースのインポート
 
 <http://localhost:8001/>（8001は環境変数`ADMINER_PORT`の値）を開き、adminerにログイン(サーバー:`db`それ以外は全て`wordpress`) データベースのインポートなどができます。
+
+wp-cliでインポートする場合
+
+```sh
+# 1, shared/ ディレクトリにインポートする sql ファイルを配置
+
+# 2, 既存のDBをリセットし、インポート
+docker compose run --rm cli bash -c "wp db reset --yes && wp db import shared/database.sql"
+
+
+```
 
 ### テーマやプラグインの追加
 
