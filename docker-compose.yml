@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: wordpress
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:6.0.3-php8.1-apache
+    ports:
+      - "8000:80"
+    restart: always
+    volumes:
+      - wp_data:/var/www/html/
+      - ./wp-content:/var/www/html/wp-content
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DEBUG: 1
+
+  cli:
+    image: wordpress:cli
+    volumes:
+      - wp_data:/var/www/html/
+      - ./wp-content:/var/www/html/wp-content
+      - ./shared:/var/www/html/shared
+    depends_on:
+      - db
+      - wordpress
+    command: "--info"
+    user: xfs
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+
+volumes:
+  wp_data:
+  db_data:
