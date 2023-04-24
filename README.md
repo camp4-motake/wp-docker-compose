@@ -1,6 +1,6 @@
 # WordPress PHP8.1 MySQLl8.0 Apache test
 
-動作検証用　WordPress6.0.x PHP8.1 MySQLl8.0 Apache 環境
+動作検証用　WordPress6.0.3 PHP8.1 MySQLl8.0 Apache 環境
 
 ## 要件
 
