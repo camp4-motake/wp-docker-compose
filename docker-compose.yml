@@ -58,6 +58,8 @@ services:
       WORDPRESS_DB_PASSWORD: wordpress
 
   adminer:
+    depends_on:
+      - db
     image: adminer
     restart: always
     ports:
