@@ -1,6 +1,6 @@
-# docker-wp-text-env WordPress PHP8.1 MySQLl8.0 Apache
+# wp-docker-compose
 
-動作検証用　WordPress6.0.3 PHP8.1 MySQLl8.0 Apache 環境
+docker compose | WordPress6.0.3 PHP8.1 MySQLl8.0 Apache 環境
 
 ## 要件
 
